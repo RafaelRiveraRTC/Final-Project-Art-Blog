@@ -23,6 +23,38 @@ namespace Final_Project_Art_Blog
         public MainWindow()
         {
             InitializeComponent();
+            lvPieces.ItemsSource = ClassData.ArtPieces;
+        }//Main Window
+
+        private void btnAddNewPiece_Click(object sender, RoutedEventArgs e)
+        {
+            //open up a new window from the button click
+            //You have to create  a new instance of the window
+            //Then do .show() on it 
+            new Add_Art_Piece().Show();
+        }
+
+        private void lvPieces_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ArtPiece selectedPiece = lvPieces.SelectedItem as ArtPiece;
+
+            if(selectedPiece != null)
+            {
+                //we attact
+                rtbPieceInfo.Document = selectedPiece.FormattedPost();//This allows the selected document to be attached
+
+                imgPieces.Source = selectedPiece.Art;
+            }
+
+       
         }
     }
+
+   //Rich Text Box (Advanced)
+   //List View (Plus Click Event)
+   //Image
+
+
+
+
 }

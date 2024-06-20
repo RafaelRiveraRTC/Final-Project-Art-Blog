@@ -7,21 +7,26 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Canvas Background="#FF5A2BB8">
-        <RichTextBox Height="153" Width="272" Canvas.Left="528" Canvas.Top="281" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <RichTextBox x:Name="rtbPieceInfo" Height="115" Width="272" Canvas.Left="528" Canvas.Top="319" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Cascadia Code">
             <FlowDocument>
                 <Paragraph>
                     <Run Text="RichTextBox"/>
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-        <ListView Height="431" Width="289" d:ItemsSource="{d:SampleData ItemCount=5}" Canvas.Left="239" Canvas.Top="3" HorizontalAlignment="Left" VerticalAlignment="Center">
+        <ListView x:Name="lvPieces" Height="431" Width="238" d:ItemsSource="{d:SampleData ItemCount=5}" Canvas.Left="239" Canvas.Top="3" HorizontalAlignment="Left" VerticalAlignment="Center" SelectionChanged="lvPieces_SelectionChanged">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn/>
+                    <GridViewColumn 
+                        Header="Name" 
+                        DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn 
+                         Header="Date" 
+                         DisplayMemberBinding="{Binding Date}"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Image Height="278" Width="272" RenderTransformOrigin="0.5,0.5" Canvas.Left="799" Canvas.Top="2" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <Image x:Name="imgPieces" Height="278" Width="272" RenderTransformOrigin="0.5,0.5" Canvas.Left="800" Canvas.Top="3" HorizontalAlignment="Left" VerticalAlignment="Top">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="-1"/>
@@ -31,6 +36,7 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
+        <Button x:Name="btnAddNewPiece" Content="btnAddNewPiece" HorizontalAlignment="Center" Height="434" VerticalAlignment="Top" Width="239" Click="btnAddNewPiece_Click"/>
 
     </Canvas>
-</Window>
+</Window> 
